@@ -14,7 +14,7 @@ def one_d_to_two_d(theta):
 def predict(X,theta):
     return matrix_multiplication(X,theta)
 
-# Calculating cost function
+# Calculating Cost
 def cost_function(y_pred,target):
     m = len(target)
     total_error = 0
