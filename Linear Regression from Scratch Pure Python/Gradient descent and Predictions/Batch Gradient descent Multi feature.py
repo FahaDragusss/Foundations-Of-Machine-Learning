@@ -4,5 +4,5 @@ def batch_gradient_descent(theta,X,y_pred,target,lr):
         sum = 0
         for i in range(len(target)):
                 sum += (y_pred[i][0]-target[i])*X[i][j]
-        theta[j][0] = theta[j][0] - lr*(sum)
+        theta[j][0] = theta[j][0] - (lr*(sum))/len(target)
     return theta
