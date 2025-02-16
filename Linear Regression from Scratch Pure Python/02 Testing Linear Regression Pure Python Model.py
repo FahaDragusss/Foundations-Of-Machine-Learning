@@ -82,4 +82,5 @@ target = [y/100000 for y in target ]
 theta = [[7.3907696687093365], [-0.15364138788362225], [-0.050766029306350074]]
 
 y_pred = predict(X,theta)
-print(cost_function(y_pred,target))
+
+print(f"Cost : ", cost_function(y_pred,target))
