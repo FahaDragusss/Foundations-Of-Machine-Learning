@@ -22,7 +22,7 @@ def batch_gradient_descent(theta,X,y_pred,target,lr):
         sum = 0
         for i in range(len(target)):
                 sum += (y_pred[i][0]-target[i])*X[i][j]
-        theta[j][0] = theta[j][0] - lr*(sum)
+        theta[j][0] = theta[j][0] - (lr*(sum))/len(target)
     return theta
 
 def matrix_multiplication(A,B):
@@ -56,6 +56,8 @@ theta = [0.1, 0.2, 0.3]
 X = add_bias_column(X)
 theta = one_d_to_two_d(theta)
 
+print(f'This is X : ', X)
+print(f'This is theta : ',theta)
 
 # Compute initial predictions and cost
 y_pred = predict(X, theta)
@@ -66,3 +68,7 @@ cost = cost_function(y_pred, y_true)
 
 print("Initial Cost : ", cost)
 
+# Perform one Gradient Descent step
+alpha = 0.02  # Learning rate
+theta_new = batch_gradient_descent(theta, X, y_pred, y_true, alpha)
+print("Updated Theta : ", theta_new)
