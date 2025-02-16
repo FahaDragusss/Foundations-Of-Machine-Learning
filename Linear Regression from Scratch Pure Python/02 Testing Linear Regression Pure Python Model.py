@@ -50,6 +50,45 @@ def matrix_multiplication(A,B):
                 C[i][j] += A[i][k] * B[k][j]
     return C
 
+# Math Functions
+def mean_absolute_error(target,y_pred):
+    m = len(target)
+    total_error = 0
+    for i in range(m):
+        total_error += abs(target[i]-y_pred[i][0])
+    return (1/m)*total_error
+
+def mean_squared_error(target,y_pred):
+    m = len(target)
+    total_error = 0
+    for i in range(m):
+        total_error += (target[i]-y_pred[i][0])**2
+    return (1/m)*total_error
+
+def root_mean_squared_error(mse):
+    return mse**0.5
+
+def r2_score(target,y_pred):
+    total_error_squared = 0
+    total_distance_from_mean_squared = 0
+    total_sum = 0
+    m = len(target)
+    
+    #Calculate mean
+    for i in range(m):
+        total_sum += target[i]
+    mean = total_sum/m
+
+    #Calculate r2 score
+    for i in range(m):
+        total_error_squared += (target[i] - y_pred[i][0])**2
+        total_distance_from_mean_squared += (target[i] - mean)**2
+
+    if total_distance_from_mean_squared == 0:
+        return 0.0
+    
+    return 1 - (total_error_squared/total_distance_from_mean_squared)
+
 #------------------------------------------------------------------
 #--------------------------- DATASET ------------------------------
 #------------------------------------------------------------------
@@ -69,11 +108,9 @@ X = add_bias_column(X)
 
 # Target test
 target = [
-    280000, 370000, 459999, 42000, 42000, 190000, 165000, 710000, 1200000, 229999,
-    310000, 320000, 100000, 160000, 60000, 100000, 350000, 700000, 300000, 830000
+    2.80000, 3.70000, 4.59999, .42000, .42000, 1.90000, 1.65000, 7.10000, 12.00000, 2.29999,
+    3.10000, 3.20000, 1.00000, 1.60000, .60000, 1.00000, 3.50000, 7.00000, 3.00000, 8.30000
 ]
-
-target = [y/100000 for y in target ]
 
 #------------------------------------------------------------------
 #---------------------- TESTING THE MODEL -------------------------
@@ -84,3 +121,7 @@ theta = [[7.3907696687093365], [-0.15364138788362225], [-0.050766029306350074]]
 y_pred = predict(X,theta)
 
 print(f"Cost : ", cost_function(y_pred,target))
+print(f"Mean squared error : ", mean_squared_error(target,y_pred))
+print(f"Root mean squared error : ", root_mean_squared_error(mean_squared_error(target,y_pred)))
+print(f"Mean absolute error : ", mean_absolute_error(target,y_pred))
+print(f"R2 score : ", r2_score(target,y_pred))
