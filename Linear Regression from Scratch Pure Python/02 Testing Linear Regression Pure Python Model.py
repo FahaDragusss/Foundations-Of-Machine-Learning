@@ -65,6 +65,7 @@ X = [
 
 year_of_advert = 2022
 X = [[km/10000, (year_of_advert - year)] for km, year in X]
+X = add_bias_column(X)
 
 # Target test
 target = [
@@ -80,4 +81,5 @@ target = [y/100000 for y in target ]
 
 theta = [[7.3907696687093365], [-0.15364138788362225], [-0.050766029306350074]]
 
-predict(X,theta)
+y_pred = predict(X,theta)
+print(cost_function(y_pred,target))
