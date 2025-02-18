@@ -108,10 +108,11 @@ X = add_bias_column(X)
 theta = one_d_to_two_d(theta)
 
 tolerance = 1e-6 # Convergence thershold
-previous_cost = 100
+previous_cost = 65
 alpha = 0.0125
 iteration = 0
 cost_history = []
+theta_history = []
 
 while True:
     y_pred = predict(X, theta)  
@@ -127,10 +128,11 @@ while True:
     if iteration % 100 == 0:  
        cost_history.append(cost)
 
-print("Final Theta:", theta)
-print("Final Cost:", cost)
+print("Final Parameters :", theta)
+print("Final Cost :", cost)
 print("Cost function decrease over time : ", cost_history)
 print(f"Converged in {iteration} iterations!")
+#print(f"How the parameters adjust themselves : ", theta_history)
 
 
 #------------------------------------------------------------------
