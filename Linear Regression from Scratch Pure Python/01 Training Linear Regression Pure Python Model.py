@@ -108,7 +108,7 @@ X = add_bias_column(X)
 theta = one_d_to_two_d(theta)
 
 tolerance = 1e-6 # Convergence thershold
-previous_cost = 65
+previous_cost = 100
 alpha = 0.0125
 iteration = 0
 cost_history = []
