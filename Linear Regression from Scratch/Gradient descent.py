@@ -1,10 +1,17 @@
 import pandas as pd
+import numpy as np
 
-def gradient_descent(theta , X , y_pred , y_test_or_train , lr):
+def batch_gradient_descent(theta , X_train , y_pred , y_train , lr):
+    y_train = y_train.to_numpy()
+    y_pred = np.dot(X_train , theta)  
+
     for j in range(len(theta)):
         sum = 0
-        for i in range(len(X)):
-            sum += (y_test_or_train[i] - y_pred[i])*X[i][j]
-        theta[j] = theta[j] - (lr*(sum))/len(y_test_or_train)
+
+        for i in range(len(X_train)):
+            sum += (y_train[i] - y_pred[i])*X_train[i, j]
+            
+        theta[j] = theta[j] - (lr*(sum))/len(y_test)
+
     return theta
         
