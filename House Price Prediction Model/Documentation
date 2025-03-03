@@ -1,9 +1,0 @@
-1st (10000 iterations)
-Cost :  229229645440.9421
-Mean squared error :  458459290881.8842
-Root mean squared error :  677096.219810659
-Mean absolute error :  556496.9892387113
-R2 score :  -0.3850864942957213
-theta : [ 0.00699621,  0.01041627, -0.00349794, -0.00394576, -0.00231157,-0.00797739]
-
-2nd (10000 iterations)
